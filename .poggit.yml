@@ -1,0 +1,8 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Shelly7w7/TotemJoin
+build-by-default: true
+branches:
+- master
+projects:
+  TotemJoin:
+    path: image.png
+...
