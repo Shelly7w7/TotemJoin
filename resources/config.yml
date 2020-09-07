@@ -1,0 +1,14 @@
+# |__   __| | |                    | |     (_)
+#   | | ___ | |_ ___ _ __ ___      | | ___  _ _ __
+#   | |/ _ \| __/ _ \ '_ ` _ \ _   | |/ _ \| | '_ \
+#   | | (_) | ||  __/ | | | | | |__| | (_) | | | | |
+#   |_|\___/ \__\___|_| |_| |_|\____/ \___/|_|_| |_|
+
+# Hello everyone! welcome to the small but worthy configuration of TotemJoin.
+# Have a suggestion? Open an issue on the github and I'll try my best to add it or fix it as soon as possible!
+# It's not confirmed if this plugin supports the forks or spoons of PMMP, It is recommended to use on PocketMine-MP!
+
+# Annoyed of that creepy sound when you join? No worries! Just change "true" to "false" to disable it.
+# Types available: "true" or "false".
+join-totem-sound: true
+# Enjoy the plugin!
