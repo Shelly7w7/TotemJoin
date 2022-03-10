@@ -4,38 +4,25 @@ declare(strict_types=1);
 
 namespace shelly7w7\TotemJoin;
 
+use pocketmine\entity\animation\TotemUseAnimation;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\item\Item;
-use pocketmine\network\mcpe\protocol\ActorEventPacket;
-use pocketmine\network\mcpe\protocol\LevelEventPacket;
+use pocketmine\item\VanillaItems;
+use pocketmine\world\sound\TotemUseSound;
 
-class EventListener implements Listener
-{
+class EventListener implements Listener {
 
-    /** @var Loader $plugin */
-    private $plugin;
+	public function onPlayerJoin(PlayerJoinEvent $event): void {
 
-    public function __construct(Loader $plugin)
-    {
-        $this->plugin = $plugin;
-    }
+		$player = $event->getPlayer();
+		$item = $player->getInventory()->getItemInHand();
+		$player->getInventory()->setItemInHand(VanillaItems::TOTEM());
+		$player->broadcastAnimation(new TotemUseAnimation($player));
+		if(Loader::getInstance()->getConfig()->get("join-totem-sound") === true) {
+			$player->getWorld()->addSound($player->getPosition(), new TotemUseSound());
+		}
+		$player->getInventory()->setItemInHand($item);
 
-    public function onPlayerJoin(PlayerJoinEvent $event): void
-    {
-
-        $player = $event->getPlayer();
-        $item = $player->getInventory()->getItemInHand();
-        $player->getInventory()->setItemInHand(Item::get(Item::TOTEM));
-        $player->broadcastEntityEvent(ActorEventPacket::CONSUME_TOTEM);
-
-        if (Loader::getInstance()->getConfig()->get("join-totem-sound") === true) {
-            $player->getLevel()->broadcastLevelEvent($player->add(0, $player->getEyeHeight()), LevelEventPacket::EVENT_SOUND_TOTEM);
-        }
-
-        $player->getInventory()->setItemInHand($item);
-
-
-    }
+	}
 
 }

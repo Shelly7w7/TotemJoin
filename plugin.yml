@@ -3,4 +3,4 @@ version: 1.0.0
 author: Shelly7w7
 main: shelly7w7\TotemJoin\Loader
 description: "Get a cool totem animation when you join!"
-api: [3.0.0]
+api: [4.0.0]
